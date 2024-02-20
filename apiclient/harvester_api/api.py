@@ -44,7 +44,12 @@ class HarvesterAPI:
                 # Fixed as:
                 # 1. va.b-xxx-head => va.b.99
                 # 2. master-xxx-head => v8.8.99
-                cur, _, _ = ver.split('-')
+
+                cur = ver
+                # release-1.3-1bda61b3-head => v1.3-1bda61b3-head
+                if cur.startswith('release-'):
+                    cur = cur.replace('release-', 'v')
+                cur, _, _ = cur.split('-')
                 cur = "v8.8" if "master" in cur else cur
                 self._version = parse_version(f"{cur}.99")
             except ValueError:
