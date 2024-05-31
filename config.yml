@@ -1,9 +1,9 @@
 # Harvester Cluster
-endpoint: 'https://localhost:30443'
+endpoint: 'https://10.10.0.100'
 username: 'admin'
-password: 'password1234'
+password: 'admin'
 # Be used to access Harvester node, fill in one of following is enough.
-host-password: ''
+host-password: 'p@ssword'
 host-private-key: ''
 
 # VLAN ID, will invoke the tests depended on external networking if not set to -1.
@@ -20,8 +20,8 @@ sleep-timeout: 3
 # script location to manipulate node power cycle
 node-scripts-location: 'scripts/vagrant'
 
-opensuse-image-url: https://download.opensuse.org/repositories/Cloud:/Images:/Leap_15.5/images/openSUSE-Leap-15.5.x86_64-NoCloud.qcow2
-ubuntu-image-url: https://cloud-images.ubuntu.com/releases/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64.img
+opensuse-image-url: http://172.19.96.23/iso/openSUSE/openSUSE-Leap-15.5.x86_64-NoCloud.qcow2
+ubuntu-image-url: http://172.19.96.23/iso/ubuntu/jammy-server-cloudimg-amd64-current.img
 # URL to download all images
 image-cache-url: ''
 
@@ -30,11 +30,11 @@ terraform-scripts-location: 'terraform_test_artifacts'
 terraform-provider-rancher: '3.1.1'
 
 # Backup Target S3
-s3-endpoint: ''
-region: ''
-accessKeyId: ''
-secretAccessKey: ''
-bucketName: ''
+s3-endpoint: 'http://172.19.104.200:9000'
+region: 'pcloud'
+accessKeyId: 'minioadmin'
+secretAccessKey: 'minioadmin'
+bucketName: 'test'
 
 # Backup Targer NFS
 nfs-endpoint: ''
