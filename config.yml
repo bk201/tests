@@ -1,9 +1,9 @@
 # Harvester Cluster
 endpoint: 'https://localhost'
 username: 'admin'
-password: 'password1234'
+password: 'admin'
 # Be used to access Harvester node, fill in one of following is enough.
-host-password: ''
+host-password: 'p@ssword'
 host-private-key: ''
 
 # VLAN ID, will invoke the tests depended on external networking if not set to -1.
@@ -44,11 +44,11 @@ terraform-provider-rancher: ''
 terraform-provider-harvester: ''
 
 # Backup Target S3
-s3-endpoint: ''
-region: ''
-accessKeyId: ''
-secretAccessKey: ''
-bucketName: ''
+s3-endpoint: 'http://172.19.104.200:9000'
+region: 'pcloud'
+accessKeyId: 'minioadmin'
+secretAccessKey: 'minioadmin'
+bucketName: 'test'
 
 # Backup Target NFS
 nfs-endpoint: ''

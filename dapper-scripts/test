@@ -1,0 +1,8 @@
+#!/bin/bash -ex
+
+cd $(dirname $0)/..
+
+mkdir -p results
+pip install -r test-requirements.txt
+pytest harvester_e2e_tests -v -m "p0" -k "apis" --html=results/api.html
+pytest harvester_e2e_tests -v -m "p0" -k "integrations and (test_1 or test_3 or test_4_vm_backup_restore or test_4_vm_snapshot)" --html=results/integrations.html
