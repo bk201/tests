@@ -620,6 +620,7 @@ def test_create_stopped_vm(api_client, stopped_vm, wait_timeout):
 @pytest.mark.p0
 @pytest.mark.virtualmachines
 class TestVMResource:
+    @pytest.mark.skip("vm clusters")
     @pytest.mark.parametrize("res_type", ["cpu", "memory"])
     def test_create_schedule_on_maximum(
         self, api_client, unique_vm_name, vm_checker, vm_calc, image,
@@ -682,6 +683,7 @@ class TestVMResource:
                 if 'persistentVolumeClaim' in vol:
                     api_client.volumes.delete(vol['persistentVolumeClaim']['claimName'])
 
+    @pytest.mark.skip("vm clusters")
     @pytest.mark.parametrize("res_type", ["cpu", "memory"])
     def test_update_schedule_on_maximum(
         self, api_client, vm_checker, vm_calc, stopped_vm, unset_cpu_memory_overcommit, res_type
