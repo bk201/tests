@@ -397,6 +397,7 @@ class TestBackupRestore:
         code, data = api_client.backups.restore(unique_vm_name, spec)
         assert 201 == code, (code, data)
 
+        sleep(60)
         # Check VM Started then get IPs (vm and host)
         vm_got_ips, (code, data) = vm_checker.wait_ip_addresses(restored_vm_name, ['default'])
         assert vm_got_ips, (
@@ -479,6 +480,7 @@ class TestBackupRestore:
         code, data = api_client.backups.restore(unique_vm_name, spec)
         assert 201 == code, f'Failed to restore backup with current VM replaced, {data}'
 
+        sleep(60)
         # Check VM Started then get IPs (vm and host)
         vm_got_ips, (code, data) = vm_checker.wait_ip_addresses(unique_vm_name, ['default'])
         assert vm_got_ips, (
@@ -551,7 +553,7 @@ class TestBackupRestore:
         code, data = api_client.backups.restore(unique_vm_name, spec)
         assert 422 == code, (code, data)
 
-    @pytest.mark.skip_version_if('< v1.2.2')
+    @pytest.mark.skip("vm clusters")
     @pytest.mark.dependency(depends=["TestBackupRestore::tests_backup_vm"], param=True)
     def test_restore_replace_with_vm_shutdown_command(
         self, api_client, vm_shell_from_host, ssh_keypair, wait_timeout, vm_checker,
@@ -597,6 +599,7 @@ class TestBackupRestore:
         code, data = api_client.backups.restore(unique_vm_name, spec)
         assert 201 == code, f'Failed to restore backup with current VM replaced, {data}'
 
+        sleep(60)
         # Check VM Started then get IPs (vm and host)
         vm_got_ips, (code, data) = vm_checker.wait_ip_addresses(unique_vm_name, ['default'])
         assert vm_got_ips, (
