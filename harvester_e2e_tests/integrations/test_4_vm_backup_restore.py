@@ -122,6 +122,8 @@ def config_backup_target(api_client, conflict_retries, backup_config, wait_timeo
         f"API Status({code}): {data}"
     )
 
+    sleep(30)
+
     yield spec
 
     # remove unbound LH backupVolumes
