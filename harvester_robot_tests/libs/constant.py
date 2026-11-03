@@ -50,6 +50,11 @@ BACKUPBACKINGIMAGE_PLURAL = "backupbackingimages"
 # Prefix of UID-style longhorn BackingImage names created by Harvester
 BACKING_IMAGE_PREFIX = "vmi"
 
+# Support bundle
+SUPPORTBUNDLE_PLURAL = "supportbundles"
+SUPPORTBUNDLE_STATE_READY = "ready"
+SUPPORTBUNDLE_STATE_ERROR = "error"
+
 # Test Labels
 LABEL_TEST = "harvesterhci.io/test"
 LABEL_TEST_VALUE = "robot-framework"

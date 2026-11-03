@@ -20,3 +20,6 @@ class Rest(Base):
 
     def update(self, setting_id, value):
         return super().update(setting_id, value)
+
+    def update_default(self, setting_id, default):
+        return super().update_default(setting_id, default)

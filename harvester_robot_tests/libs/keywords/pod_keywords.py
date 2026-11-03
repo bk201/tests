@@ -48,3 +48,7 @@ class pod_keywords:
     ):
         logging(f"Waiting for pod with label selector '{label_selector}' to be gone")
         return self.pod.wait_for_gone_with_label_selector(namespace, label_selector, timeout)
+
+    def get_pod_container_images(self, namespace, label_selector):
+        """Return {pod name: {container name: image}} of the matching pods."""
+        return self.pod.get_container_images(namespace, label_selector)

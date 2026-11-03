@@ -39,3 +39,6 @@ class Pod:
 
     def get_logs(self, pod_name, namespace):
         return self.pod.get_logs(pod_name, namespace)
+
+    def get_container_images(self, namespace, label_selector):
+        return self.pod.get_container_images(namespace, label_selector)

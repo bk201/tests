@@ -47,3 +47,19 @@ Wait For Pods Gone
     Log    Waiting for pods with label ${label} in namespace ${namespace} to be gone
     pod_keywords.wait_for_pods_gone_with_label_selector    ${namespace}    ${label}    ${timeout}
     Log    No pods with label ${label} remain in ${namespace}
+
+Pod Containers Should Use Images
+    [Arguments]    ${namespace}    ${label}    ${expected}
+    [Documentation]    Every pod matching the label runs each container in the
+    ...    ${expected} dictionary ({container name: image}) with its image. Fails
+    ...    if no pod matches.
+    ${pods}=    pod_keywords.get_pod_container_images    ${namespace}    ${label}
+    Should Not Be Empty    ${pods}    msg=No pods with label ${label} in ${namespace}
+    FOR    ${pod}    ${containers}    IN    &{pods}
+        FOR    ${container}    ${image}    IN    &{expected}
+            Dictionary Should Contain Key    ${containers}    ${container}
+            ...    msg=Pod ${pod} has no container ${container}: ${containers}
+            Should Be Equal    ${containers}[${container}]    ${image}
+            ...    msg=Pod ${pod} container ${container} runs ${containers}[${container}], expected ${image}
+        END
+    END

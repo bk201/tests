@@ -34,3 +34,10 @@ class Setting(Base):
         except NotImplementedError as e:
             logging(e)
             return self.rest.update(setting_id, value)
+
+    def update_default(self, setting_id, default):
+        try:
+            return self.crd.update_default(setting_id, default)
+        except NotImplementedError as e:
+            logging(e)
+            return self.rest.update_default(setting_id, default)

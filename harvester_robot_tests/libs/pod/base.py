@@ -26,3 +26,8 @@ class Base(ABC):
     def get_logs(self, pod_name, namespace):
         """Return the full log output of a pod as a string."""
         pass
+
+    @abstractmethod
+    def get_container_images(self, namespace, label_selector):
+        """Return {pod name: {container name: image}} of the matching pods."""
+        pass

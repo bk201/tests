@@ -23,3 +23,7 @@ class Base(ABC):
     @abstractmethod
     def update(self, setting_id, value):
         raise NotImplementedError(self.unsupported_msg)
+
+    @abstractmethod
+    def update_default(self, setting_id, default):
+        raise NotImplementedError(self.unsupported_msg)

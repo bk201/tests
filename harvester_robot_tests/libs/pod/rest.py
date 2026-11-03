@@ -32,3 +32,6 @@ class Rest(Base):
 
     def get_logs(self, pod_name, namespace):
         self._not_implemented("get_logs")
+
+    def get_container_images(self, namespace, label_selector):
+        self._not_implemented("get_container_images")

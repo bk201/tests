@@ -32,6 +32,9 @@ class setting_keywords:
     def get_value(self, setting_id):
         return self.setting.get(setting_id).get('value')
 
+    def get_default(self, setting_id):
+        return self.setting.get(setting_id).get('default')
+
     def get_condition_message(self, setting_id: str, condition_type: str):
         conditions = self.setting.get(setting_id).get('status', {}).get('conditions', [])
         for condition in conditions:
@@ -46,3 +49,6 @@ class setting_keywords:
     def update(self, setting_id, value):
         setting = self.setting.update(setting_id, value)
         return setting
+
+    def update_default(self, setting_id, default):
+        return self.setting.update_default(setting_id, default)

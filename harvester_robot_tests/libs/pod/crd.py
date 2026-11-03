@@ -182,3 +182,14 @@ class CRD(Base):
         logs = self.core_api.read_namespaced_pod_log(name=pod_name, namespace=namespace)
         logging(f"Logs for pod '{pod_name}':\n{logs}")
         return logs
+
+    def get_container_images(self, namespace, label_selector):
+        """Return {pod name: {container name: image}} of the matching pods."""
+        pods = self.core_api.list_namespaced_pod(
+            namespace=namespace, label_selector=label_selector)
+        images = {
+            pod.metadata.name: {c.name: c.image for c in pod.spec.containers}
+            for pod in pods.items
+        }
+        logging(f"Container images of pods with selector '{label_selector}': {images}")
+        return images
